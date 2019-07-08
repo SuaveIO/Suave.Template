@@ -11,7 +11,7 @@ let dotnetcliVersion = DotNetCli.GetDotNetSDKVersionFromGlobalJson()
 Target "Clean" DoNothing
 
 Target "InstallDotNetCore" (fun _ ->
-  DotNetCli.InstallDotNetSDK dotnetcliVersion |> ignore
+    DotNetCli.InstallDotNetSDK dotnetcliVersion |> ignore
 )
 
 
@@ -24,26 +24,26 @@ Target "Build" (fun _ ->
 )
 
 Target "Run" (fun () ->
-  let server = async {
-    DotNetCli.RunCommand (fun p -> {p with WorkingDir = appPath}) "watch run"
-  }
-  let browser = async {
-    Threading.Thread.Sleep 5000
-    Diagnostics.Process.Start "http://localhost:8085" |> ignore
-  }
+    let server = async {
+        DotNetCli.RunCommand (fun p -> {p with WorkingDir = appPath}) "watch run"
+    }
+    let browser = async {
+        Threading.Thread.Sleep 5000
+        Diagnostics.Process.Start "http://localhost:8080" |> ignore
+    }
 
-  [ server; browser]
-  |> Async.Parallel
-  |> Async.RunSynchronously
-  |> ignore
+    [ server; browser]
+    |> Async.Parallel
+    |> Async.RunSynchronously
+    |> ignore
 )
 
 "Clean"
-  ==> "InstallDotNetCore"
-  ==> "Build"
+    ==> "InstallDotNetCore"
+    ==> "Build"
 
 "Clean"
-  ==> "Restore"
-  ==> "Run"
+    ==> "Restore"
+    ==> "Run"
 
 RunTargetOrDefault "Build"

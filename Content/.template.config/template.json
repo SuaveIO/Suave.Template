@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "Jacob Chang",
   "classifications": ["F#", "Web", "Suave", "Http", "Service", "Functional"],
-  "name": "Suave v0.0.1",
+  "name": "Suave v0.0.2",
   "tags": {
     "language": "F#",
     "type": "project"

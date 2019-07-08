@@ -4,7 +4,7 @@ A dotnet CLI template for [Suave](https://github.com/SuaveIO/Suave) projects. In
 
 ## Prerequisites
 
-* [dotnet SDK 2.0.0](https://www.microsoft.com/net/core) together with dotnet CLI
+* [dotnet SDK 2.2](https://www.microsoft.com/net/core) together with dotnet CLI
 
 ## Using the template
 
